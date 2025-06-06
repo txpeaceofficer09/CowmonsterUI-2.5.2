@@ -1,0 +1,17 @@
+## Interface: 20502
+## Title: CowmonsterUI_InfoBar
+## Notes: An information bar for CowmonsterUI.
+## Author: Cowmonster (http://www.wowinterface.com)
+## Version: 1.0.3
+## Dependencies: CowmonsterUI
+## SavedVariables: RecordsDB
+Functions.lua
+Money.lua
+XP.lua
+Memory.lua
+Latency.lua
+FrameRate.lua
+Clock.lua
+Bags.lua
+Guild.lua
+Core.lua
