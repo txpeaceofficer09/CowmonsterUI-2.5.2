@@ -209,17 +209,6 @@ local function GetNumGuildMembersOnline()
 	return select(2, GetNumGuildMembers())
 end
 
-function InfoBarGuild_OnUpdate(self, elapsed)
-	self.timer = (self.timer or 0) + elapsed
-
-	if elapsed >= 1 then
-		local numTotalGuildMembers = GetNumGuildMembersTotal()
-		local numOnlineGuildMembers = GetNumGuildMembersOnline()
-
-		InfoBarSetText("InfoBarGuild", "Guild: %s / %s", numOnlineGuildMembers, numTotalGuildMembers)
-	end
-end
-
 local function RemoveGuildMember(name)
 	for k,v in ipairs(GuildMembersDB) do
 		if v.name == name then
@@ -250,6 +239,36 @@ local function GuildMemberOnline(name)
 			onlineGuildMembers = onlineGuildMembers + 1
 			break
 		end
+	end
+end
+
+local function UpdateRoster()
+		local numGuildMembers = GetNumGuildMembersTotal()
+		onlineGuildMembers = GetNumGuildMembersOnline()
+
+		GuildMembersDB = {}
+
+		for i=1,numGuildMembers,1 do
+			local name, rank, rankIndex, level, class, zone, note, officernote, online = GetGuildRosterInfo(i);
+
+			tinsert(GuildMembersDB, {["name"] = name, ["rank"] = rank, ["rankIndex"] = rankIndex, ["level"] = level, ["class"] = class, ["zone"] = zone, ["note"] = note, ["officernote"] = officernote, ["online"] = online})
+		end
+
+		InfoBarSetText("InfoBarGuild", "Guild: %s / %s", onlineGuildMembers, numGuildMembers)
+end
+
+function InfoBarGuild_OnUpdate(self, elapsed)
+	self.timer = (self.timer or 0) + elapsed
+
+	if elapsed >= 1 then
+		--[[
+		local numTotalGuildMembers = GetNumGuildMembersTotal()
+		local numOnlineGuildMembers = GetNumGuildMembersOnline()
+
+		InfoBarSetText("InfoBarGuild", "Guild: %s / %s", numOnlineGuildMembers, numTotalGuildMembers)
+		]]
+		UpdateRoster()
+		self.timer = 0
 	end
 end
 

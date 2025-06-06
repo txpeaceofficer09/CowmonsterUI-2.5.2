@@ -274,10 +274,10 @@ function f.OnEvent(self, event, ...)
 			for i=1,12,1 do
 				if i == 1 then
 					_G["MultiBarLeftButton"..i]:ClearAllPoints()
-					_G["MultiBarLeftButton"..i]:SetPoint("LEFT", ActionButton12, "RIGHT", 4, 0)
+					_G["MultiBarLeftButton"..i]:SetPoint("LEFT", ActionButton12, "RIGHT", 14, 0)
 				else
 					_G["MultiBarLeftButton"..i]:ClearAllPoints()
-					_G["MultiBarLeftButton"..i]:SetPoint("LEFT", _G["MultiBarLeftButton"..(i-1)], "RIGHT", 4, 0)
+					_G["MultiBarLeftButton"..i]:SetPoint("LEFT", _G["MultiBarLeftButton"..(i-1)], "RIGHT", 6, 0)
 				end
 
 				_G["MultiBarRightButton"..i]:ClearAllPoints()
@@ -298,11 +298,16 @@ function f.OnEvent(self, event, ...)
 			MainMenuBarBackpackButton:ClearAllPoints()
 			MainMenuBarBackpackButton:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", 0, 20)
 
+			--[[
 			MainMenuBarPerformanceBarFrameButton:ClearAllPoints()
 			MainMenuBarPerformanceBarFrameButton:SetPoint("RIGHT", KeyRingButton, "LEFT", -4, 0)
 
 			MainMenuBarPerformanceBar:ClearAllPoints()
 			MainMenuBarPerformanceBar:SetPoint("RIGHT", KeyRingButton, "LEFT", -4, 0)
+			]]
+
+			MainMenuBarPerformanceBarFrame:Hide()
+			MainMenuBarPerformanceBar:Hide()
 
 --MainMenuBarPerformanceBarFrame:SetFrameStrata("HIGH")
 --MainMenuBarPerformanceBarFrame:SetScale((HelpMicroButton:GetWidth() / MainMenuBarPerformanceBarFrame:GetWidth()) * (1 / 3))
