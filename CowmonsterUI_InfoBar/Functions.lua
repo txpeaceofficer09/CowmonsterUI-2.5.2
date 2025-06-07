@@ -140,7 +140,7 @@ local InfoBarStrings = {
 			["OnEnter"] = "InfoBarGuild_OnEnter",
 			["OnLeave"] = "InfoBarGuild_OnLeave",
 			["OnClick"] = "InfoBarGuild_OnClick",
-			["OnUpdate"] = "InfoBarGuild_OnUpdate",
+			--["OnUpdate"] = "InfoBarGuild_OnUpdate",
 			["OnEvent"] = "InfoBarGuild_OnEvent",
 		},
 		["Events"] = {
